@@ -13,8 +13,8 @@ public class OSassign1 {
     static int REQUEST;                         //กำหนดจำนวน request
     static int CONSUMER;                        //กำหนดจำนวน consumer
     static int PRODUCER;                        //กำหนดจำนวน producer
-    static long removeTimeout = 2;             //กำหนด timeout ของ function remove
-    static long addTimeout = 2;                //กำหนด timeout ของ function append
+    static long removeTimeout = 20;             //กำหนด timeout ของ function remove
+    static long addTimeout = 20;                //กำหนด timeout ของ function append
     static int consumeNum = 0;              //ตัวแปรนับจำนวน consume
     static int produceNum = 0;              //ตัวแปรนับจำนวน produce
     static int num = 0;                     //ตัวแปรใช้นับการเรียก request 
@@ -165,8 +165,7 @@ public class OSassign1 {
 
                 synchronized (this) { // lock.acquire()
                     
-                    // consumer thread waits while list
-                    // is empty
+                    // consumer thread waits while list is empty
                     while (q.isEmpty(q) && num < REQUEST) { // consumer thread ทำการรอเมื่อ buffer เต็มและยังไม่เกิน request                   
                         wait(removeTimeout); //รอ signal จาก producer
                     }
